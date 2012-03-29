@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello">Hello World, MCleanerActivity!</string>
+    <string name="app_name">MCleaner</string>
+    <string name="item_pic_desc">icon</string>
+    <string name="item_button_text">Uninstall</string>
+
+</resources>
