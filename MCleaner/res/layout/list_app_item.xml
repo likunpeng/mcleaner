@@ -9,7 +9,10 @@
         android:id="@+id/iv_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
         android:contentDescription="@string/item_pic_desc"
+        android:maxWidth="48dip"
+        android:maxHeight="48dip"
         android:src="@drawable/ic_launcher" />
 
     <LinearLayout
@@ -38,7 +41,7 @@
         android:id="@+id/b_app_delete"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_gravity="center_vertical"
         android:text="@string/item_button_text" />
 
 </LinearLayout>

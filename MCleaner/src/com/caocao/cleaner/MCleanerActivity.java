@@ -29,11 +29,13 @@ public class MCleanerActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-
 		// 1. set View
 		initView();
+	}
 
-		// 2. get adapter
+	@Override
+	protected void onStart() {
+		super.onStart();
 		ShowView sv = new ShowView();
 		sv.execute();
 	}
@@ -84,7 +86,10 @@ public class MCleanerActivity extends Activity {
 			if ((ApplicationInfo.FLAG_SYSTEM & p.applicationInfo.flags) > 0) {
 				continue;
 			} else {
-				if (activiedSet.contains(p.packageName)) {
+				// 3. ignore self
+				if (activiedSet.contains(p.packageName)
+						&& !p.packageName
+								.equals(this.getApplicationInfo().packageName)) {
 					AppVO appVO = new AppVO();
 					appVO.name = p.applicationInfo.loadLabel(
 							this.getPackageManager()).toString();
@@ -112,16 +117,14 @@ public class MCleanerActivity extends Activity {
 			BufferedReader bufferedReader = new BufferedReader(
 					new InputStreamReader(process.getInputStream()));
 			String line = "";
-			int index = 0;
 			while ((line = bufferedReader.readLine()) != null) {
 				String name = getActivedPackageName(line);
 				if (name != null) {
 					set.add(name);
 				}
-				if (index > 1000) {
+				if (set.size() > 10) {
 					break;
 				}
-				index++;
 			}
 		} catch (IOException e) {
 		}
