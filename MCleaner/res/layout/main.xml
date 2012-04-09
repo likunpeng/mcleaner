@@ -4,20 +4,17 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <ListView
-        android:id="@+id/lv_app"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:dividerHeight="3dip" />
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
 
-    <LinearLayout
-        android:id="@+id/ll_progressBar"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center"
-        android:visibility="gone" >
-
-        <include layout="@layout/common_progressbar" />
-    </LinearLayout>
+        <android.support.v4.view.PagerTitleStrip
+            android:id="@+id/pagertitle"
+            android:layout_width="wrap_content"
+            android:layout_height="20dip"
+            android:layout_gravity="top" />
+    </android.support.v4.view.ViewPager>
 
 </LinearLayout>

@@ -47,7 +47,7 @@ public class AppAdapter extends BaseAdapter {
 		// 1. init view
 		if (convertView == null) {
 			convertView = LayoutInflater.from(activity).inflate(
-					R.layout.list_app_item, null);
+					R.layout.list_recent_app_item, null);
 			appItem = new AppItem();
 			appItem.ivIcon = (ImageView) convertView.findViewById(R.id.iv_icon);
 			appItem.tvPackageName = (TextView) convertView
