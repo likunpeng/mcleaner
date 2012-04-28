@@ -1,9 +1,24 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, MCleanerActivity!</string>
     <string name="app_name">MCleaner</string>
+    <string name="about">About</string>
+    <string name="about_desc">This application is a simple tools to help us uninstall application. </string>
+    <string name="cancel">Cancel</string>
+    <string name="recent_use">Recent Use</string>
+    <string name="installed_app">All Installed</string>
+    <string name="happy_birthday">Happy Birthday</string>
+    <string name="ok">  O K  </string>
     <string name="item_pic_desc">icon</string>
     <string name="item_button_text">Uninstall</string>
+    <string name="vip">VIP</string>
+    <string name="vip_desc">Please input your birthday to verify whether you are our VIP:</string>
+
+    <string-array name="vip_birthdate">
+        <item>1981/9/7</item>
+        <item>1982/4/15</item>
+        <item>1984/8/19</item>
+        <item>1985/7/25</item>
+        <item>1986/2/6</item>
+    </string-array>
 
 </resources>

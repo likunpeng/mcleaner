@@ -3,12 +3,12 @@ package com.caocao.cleaner.fragment;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.caocao.cleaner.AppAdapter;
-import com.caocao.cleaner.AppVO;
-import com.caocao.cleaner.R;
-
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
+import android.content.Context;
 import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -18,10 +18,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
-public class UserApp extends Fragment {
+import com.caocao.cleaner.AppAdapter;
+import com.caocao.cleaner.AppVO;
+import com.caocao.cleaner.R;
+
+public class RunningApp extends Fragment {
 	private ListView lvApp;
 	private LinearLayout llProgressBar;
 	private AppAdapter appAdapter;
+	private Context context;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,6 +34,7 @@ public class UserApp extends Fragment {
 		View v = inflater.inflate(R.layout.list_app, container, false);
 		lvApp = (ListView) v.findViewById(R.id.lv_app);
 		llProgressBar = (LinearLayout) v.findViewById(R.id.ll_progressBar);
+		this.context = getActivity().getApplicationContext();
 		return v;
 	}
 
@@ -70,29 +76,31 @@ public class UserApp extends Fragment {
 	}
 
 	private List<AppVO> getAppList() {
-		// 2. get package name of installed app
-		List<PackageInfo> packs = this.getActivity().getPackageManager()
-				.getInstalledPackages(0);
-		List<AppVO> list = new ArrayList<AppVO>();
-		for (PackageInfo p : packs) {
-			if ((ApplicationInfo.FLAG_SYSTEM & p.applicationInfo.flags) > 0) {
-				continue;
-			} else {
-				// 3. ignore self
-				if (!p.packageName.equals(this.getActivity()
-						.getApplicationInfo().packageName)) {
-					AppVO appVO = new AppVO();
-					appVO.name = p.applicationInfo.loadLabel(
-							this.getActivity().getPackageManager()).toString();
-					appVO.packageName = p.packageName;
-
-					appVO.icon = p.applicationInfo.loadIcon(this.getActivity()
-							.getPackageManager());
-					list.add(appVO);
+		ActivityManager am = (ActivityManager) context
+				.getSystemService(Context.ACTIVITY_SERVICE);
+		List<RunningAppProcessInfo> list = am.getRunningAppProcesses();
+		PackageManager pm = context.getPackageManager();
+		List<AppVO> listAppVO = new ArrayList<AppVO>();
+		for (RunningAppProcessInfo ti : list) {
+			if (pm.getLaunchIntentForPackage(ti.processName) != null) {
+				try {
+					ApplicationInfo ai = pm.getApplicationInfo(ti.processName,
+							PackageManager.GET_META_DATA);
+					if (ai != null) {
+						AppVO appVO = new AppVO();
+						appVO.name = ai.loadLabel(
+								this.getActivity().getPackageManager())
+								.toString();
+						appVO.packageName = ai.packageName;
+						appVO.icon = ai.loadIcon(this.getActivity()
+								.getPackageManager());
+						listAppVO.add(appVO);
+					}
+				} catch (NameNotFoundException e) {
+					e.printStackTrace();
 				}
 			}
 		}
-		return list;
+		return listAppVO;
 	}
-
 }

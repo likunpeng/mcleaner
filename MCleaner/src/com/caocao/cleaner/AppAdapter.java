@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class AppAdapter extends BaseAdapter {
 
-//	private static final String TAG = "AppAdapter";
+	private static final String TAG = "AppAdapter";
 
 	private Activity activity;
 	private List<AppVO> list;

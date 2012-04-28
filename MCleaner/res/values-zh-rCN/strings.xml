@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">闪 卸</string>
+    <string name="about">关 于</string>
+    <string name="about_desc">这是一款简单的、方便用户卸载软件的小工具。</string>
+    <string name="cancel"> 取 消 </string>
+    <string name="recent_use">最近使用</string>
+    <string name="installed_app">已安装</string>
+    <string name="happy_birthday">生日快乐</string>
+    <string name="ok">  确 定 </string>
+    <string name="item_pic_desc">图标</string>
+    <string name="item_button_text">卸 载</string>
+    <string name="vip">VIP</string>
+    <string name="vip_desc">请输入VIP的生日:</string>
+
+    <string-array name="vip_birthdate">
+        <item>1981/9/7</item>
+        <item>1982/4/15</item>
+        <item>1984/8/19</item>
+        <item>1985/7/25</item>
+        <item>1986/2/6</item>
+    </string-array>
+
+</resources>

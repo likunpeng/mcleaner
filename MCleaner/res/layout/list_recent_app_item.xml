@@ -7,18 +7,19 @@
 
     <ImageView
         android:id="@+id/iv_icon"
+        android:layout_width="48dip"
+        android:layout_height="48dip"
         android:layout_gravity="center_vertical"
         android:contentDescription="@string/item_pic_desc"
-        android:layout_width="32dip"
-        android:layout_height="32dip"
-        android:src="@drawable/icon" />
+        android:src="@drawable/icon" 
+        android:layout_marginLeft="8dip"/>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
         android:layout_margin="10dip"
+        android:layout_weight="1"
         android:orientation="vertical" >
 
         <TextView
@@ -38,9 +39,11 @@
 
     <Button
         android:id="@+id/b_app_delete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="64dip"
+        android:layout_height="42dip"
         android:layout_gravity="center_vertical"
-        android:text="@string/item_button_text" />
+        android:text="@string/item_button_text"
+        android:textSize="18dip" 
+        android:layout_marginRight="8dip"/>
 
 </LinearLayout>

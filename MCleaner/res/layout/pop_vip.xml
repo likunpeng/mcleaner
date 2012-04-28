@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="#FF334455"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="80dip"
+        android:layout_height="80dip"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dip"
+        android:layout_marginTop="40dip"
+        android:contentDescription="@string/item_pic_desc"
+        android:src="@drawable/icon" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/vip_desc" />
+
+    <DatePicker
+        android:id="@+id/dp_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+
+    <Button
+        android:id="@+id/b_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dip"
+        android:text="@string/ok" />
+
+</LinearLayout>
